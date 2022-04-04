@@ -1,5 +1,7 @@
 import sendgrid from "@sendgrid/mail"
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
+const sendgridAPIKey = process.env.SENDGRID_API_KEY || ""
+
+sendgrid.setApiKey(sendgridAPIKey)
 
 export default sendgrid
