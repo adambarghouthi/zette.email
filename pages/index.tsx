@@ -23,8 +23,8 @@ const Home: NextPage = () => {
       await sendEmail(email, "hi", "Hello World!")
       setSuccess("Email sent! Check spam if u don't see it :)")
     } catch (error: any) {
-      console.log(error)
-      setError(error.message)
+      console.log(error.response.data)
+      setError(error.response.data.message)
     }
 
     setLoading(false)
