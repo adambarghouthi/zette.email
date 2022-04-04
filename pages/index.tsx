@@ -21,9 +21,9 @@ const Home: NextPage = () => {
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
         <h1 className="mb-3 text-6xl font-bold">
           Zette{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
+          <span className="text-blue-600">
             Emails
-          </a>
+          </span>
         </h1>
 
         <div className="mb-3">
