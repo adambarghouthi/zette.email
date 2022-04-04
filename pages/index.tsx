@@ -3,12 +3,32 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Textfield from '../components/Textfield'
+import { sendEmail } from '../lib/apiRequests'
 
 const Home: NextPage = () => {
   const [email, setEmail] = useState('')
+  const [success, setSuccess] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleTextfieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value)
+  const handleTextfieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value)
+  }
+
+  const handleButtonClick = async () => {
+    setLoading(true)
+    setSuccess('')
+    setError('')
+
+    try {
+      await sendEmail(email, "hi", "Hello World!")
+      setSuccess("Email sent!")
+    } catch (error: any) {
+      console.log(error)
+      setError(error.message)
+    }
+
+    setLoading(false)
   }
 
   return (
@@ -36,24 +56,20 @@ const Home: NextPage = () => {
             onChange={handleTextfieldChange} />
         </div>
 
+        {error && <p className="text-red-500">{error}</p>}
+        {success && <p className="text-green-500">{success}</p>}
+
         <button
           type="button"
           className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={handleButtonClick}
         >
-          Send email
+          { loading ? 'Sending...' : 'Send email' }
         </button>
       </main>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
+        Made with ❤️ by Adam Albarghouthi
       </footer>
     </div>
   )
