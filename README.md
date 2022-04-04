@@ -16,7 +16,7 @@
 
 ### Method 2
 
-- Send a POST request to `zette.email/api/emails` with JSON body that contains
+Send a POST request to `zette.email/api/emails` with JSON body that contains
 
 ```
 {
@@ -27,6 +27,8 @@
 ```
 
 Example response:
+
+Reference error through `error.response.data` on the front-end.
 
 ```
 {
