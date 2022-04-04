@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 
     try {
       await sendEmail(email, "hi", "Hello World!")
-      setSuccess("Email sent!")
+      setSuccess("Email sent! Check spam if u don't see it :)")
     } catch (error: any) {
       console.log(error)
       setError(error.message)
@@ -56,8 +56,8 @@ const Home: NextPage = () => {
             onChange={handleTextfieldChange} />
         </div>
 
-        {error && <p className="text-red-500">{error}</p>}
-        {success && <p className="text-green-500">{success}</p>}
+        {error && <p className="mb-3 text-red-500">{error}</p>}
+        {success && <p className="mb-3 text-green-500">{success}</p>}
 
         <button
           type="button"
