@@ -25,3 +25,12 @@
     text: string, // optional
 }
 ```
+
+Example response:
+
+```
+{
+    status: string, // "success" or "error"
+    message: string,
+}
+```
