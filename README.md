@@ -1,23 +1,27 @@
-# Next.js + Tailwind CSS Example
+# How to run
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+- Clone project
+- `cd` into project directory
+- `npm i` to download node packages
+- `npm run dev` to run on `localhost:3000`
 
-## Deploy your own
+## How to test
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+### Method 1
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- Go to [localhost:3000](localhost:3000) or [zette.email](https://zette.email)
+- Enter an email in the textfield
+- Click "Send email" button
+- Find the email in your inbox
 
-## How to use
+### Method 2
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+- Send a POST request to `zette.email/api/emails` with JSON body that contains
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app -- --example with-tailwindcss with-tailwindcss-app
 ```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+{
+    to: string,
+    subject: string, // optional
+    text: string, // optional
+}
+```
